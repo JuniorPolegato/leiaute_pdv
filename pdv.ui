@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<interface>
+  <requires lib="gtk+" version="2.16"/>
+  <!-- interface-naming-policy project-wide -->
+  <object class="GtkListStore" id="ls_itens">
+    <columns>
+      <!-- column-name Código -->
+      <column type="gchararray"/>
+      <!-- column-name Descrição -->
+      <column type="gchararray"/>
+      <!-- column-name Valor -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0">7920123456789</col>
+        <col id="1" translatable="yes">Produto 7920123456789</col>
+        <col id="2">2,98</col>
+      </row>
+      <row>
+        <col id="0">7920987654321</col>
+        <col id="1" translatable="yes">Produto de teste</col>
+        <col id="2">14,49</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkWindow" id="window1">
+    <property name="width_request">800</property>
+    <property name="height_request">600</property>
+    <property name="visible">True</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center</property>
+    <property name="default_width">800</property>
+    <property name="default_height">600</property>
+    <property name="decorated">False</property>
+    <signal name="delete_event" handler="ao_sair"/>
+    <child>
+      <object class="GtkFixed" id="fixed1">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkEntry" id="ed_cod_barras">
+            <property name="width_request">307</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="has_focus">True</property>
+            <property name="is_focus">True</property>
+            <property name="max_length">13</property>
+            <property name="has_frame">False</property>
+            <property name="invisible_char">&#x25CF;</property>
+            <property name="shadow_type">none</property>
+            <signal name="key_release_event" handler="ao_liberar_tecla"/>
+          </object>
+          <packing>
+            <property name="x">34</property>
+            <property name="y">100</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="scrolledwindow1">
+            <property name="width_request">390</property>
+            <property name="height_request">371</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hscrollbar_policy">automatic</property>
+            <child>
+              <object class="GtkTreeView" id="gr_lista">
+                <property name="width_request">100</property>
+                <property name="height_request">237</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="model">ls_itens</property>
+                <property name="rules_hint">True</property>
+                <property name="enable_grid_lines">both</property>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcolumn1">
+                    <property name="title">C&#xF3;digo</property>
+                    <property name="alignment">1</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext1">
+                        <property name="xalign">1</property>
+                      </object>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcolumn2">
+                    <property name="title">Descri&#xE7;&#xE3;o</property>
+                    <property name="expand">True</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext2"/>
+                      <attributes>
+                        <attribute name="text">1</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcolumn3">
+                    <property name="title">Valor</property>
+                    <property name="alignment">1</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext3">
+                        <property name="xalign">1</property>
+                        <property name="alignment">right</property>
+                      </object>
+                      <attributes>
+                        <attribute name="text">2</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">378</property>
+            <property name="y">113</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="lb_descricao">
+            <property name="width_request">664</property>
+            <property name="height_request">62</property>
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Refrigerante Lata 350ml</property>
+            <attributes>
+              <attribute name="weight" value="heavy"/>
+              <attribute name="absolute-size" value="48000"/>
+              <attribute name="foreground" value="#ffffffffffff"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">100</property>
+            <property name="y">15</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="lb_itens">
+            <property name="width_request">65</property>
+            <property name="height_request">45</property>
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">2</property>
+            <attributes>
+              <attribute name="weight" value="heavy"/>
+              <attribute name="absolute-size" value="32000"/>
+              <attribute name="foreground" value="#ffffffffffff"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">373</property>
+            <property name="y">521</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="lb_total">
+            <property name="width_request">292</property>
+            <property name="height_request">45</property>
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">17,47</property>
+            <attributes>
+              <attribute name="weight" value="heavy"/>
+              <attribute name="absolute-size" value="32000"/>
+              <attribute name="foreground" value="#ffffffffffff"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">477</property>
+            <property name="y">521</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
